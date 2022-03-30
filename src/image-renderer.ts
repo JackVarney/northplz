@@ -1,13 +1,15 @@
-import SimplexNoise from 'simplex-noise';
-import images from './images';
-import { range } from '../../utils';
+import SimplexNoise from "simplex-noise";
+import images from "./images";
+import { log, range } from "./util";
 
 const loadImages = new Promise<HTMLImageElement[]>((res) => {
   const imagePromisified = (url: string) => {
     const image = new Image();
     image.src = url;
     const p = new Promise<HTMLImageElement>((res) => {
-      image.onload = () => res(image);
+      image.onload = () => {
+        res(image);
+      };
     });
 
     return p;
@@ -18,83 +20,66 @@ const loadImages = new Promise<HTMLImageElement[]>((res) => {
 
 const noise = new SimplexNoise();
 
-export default async (canvas: HTMLCanvasElement) => {
-  let width = canvas.width;
-  let height = canvas.width;
-  const sliceLength = width / 12;
+const createPoint = (
+  x: number,
+  y: number,
+  w: number,
+  h: number,
+  t: number
+) => ({
+  x,
+  y,
+  w,
+  h,
+  t,
+  n: noise.noise2D(x, y),
+});
 
-  const ctx = canvas.getContext('2d')!;
-  const images = await loadImages;
+type Point = ReturnType<typeof createPoint>;
 
-  function createPoints() {
-    const createPoint = (
-      x: number,
-      y: number,
-      w: number,
-      h: number,
-      t: number
-    ) => ({
-      x,
-      y,
-      w,
-      h,
-      t,
-      n: noise.noise2D(x, y),
-    });
+function createPoints() {
+  const points: Point[] = [];
+  const w = window.innerWidth / 100;
+  const h = window.innerWidth / 100;
 
-    const points: ReturnType<typeof createPoint>[] = [];
-    const w = width / sliceLength;
-    const h = height / sliceLength;
+  for (const x of range(w)) {
+    for (const y of range(h)) {
+      const t = (x * w + y * h) / 40;
 
-    for (const x of range(w)) {
-      for (const y of range(h)) {
-        const t = (x * w + y * h) / 3;
-
-        points.push(createPoint(x, y, sliceLength, sliceLength, t));
-      }
+      points.push(createPoint(x, y, 100, 100, t));
     }
-
-    const lastPoint = points.reverse()[0];
-    for (const n of range(10)) {
-      const point = { ...lastPoint };
-      point.t = point.t + n * 15;
-      points.push(point);
-    }
-
-    points.push(createPoint(0, 0, 0, 0, 1000));
-
-    return points;
   }
 
-  const points = createPoints();
-  ctx.globalAlpha = 0.25;
+  points.push(createPoint(0, 0, 0, 0, 1000));
+
+  return points;
+}
+
+export default async () => {
+  const images = await loadImages;
+
   let then = Date.now();
   let index = 0;
-  let image = images[index];
+  const points = createPoints();
 
-  function render() {
-    width = canvas.width;
-    height = canvas.width;
-
+  function render(ctx: CanvasRenderingContext2D) {
     const now = Date.now();
-    const shouldRender = (t: number) => now - then > t;
-    const shouldFlipImages = points.every(({ t }) => shouldRender(t));
+    const shouldRender = ({ t }: { t: number }) => now - then > t;
+    const shouldRotateImages = points.every(shouldRender);
 
-    if (shouldFlipImages) {
+    if (shouldRotateImages) {
       then = Date.now();
 
       index += 1;
       if (index === images.length) {
         index = 0;
       }
-
-      image = images[index];
     }
 
     for (const { x, y, w, h, t, n } of points) {
-      if (shouldRender(t * n)) {
+      if (shouldRender({ t })) {
         ctx.drawImage(
-          image,
+          images[index],
           x * w, // x pos in spritesheet
           y * h, // y pos in spritesheet
           w, // x distance in spritesheet
@@ -106,23 +91,6 @@ export default async (canvas: HTMLCanvasElement) => {
         );
       }
     }
-
-    const imageData = ctx.getImageData(0, 0, width, height);
-    const data = imageData.data;
-
-    for (let i = 0; i < data.length; i += 4) {
-      const red = data[i];
-      const green = data[i + 1];
-      const blue = data[i + 2];
-
-      if (green > 120 && red < 20 && blue < 20) {
-        data[i + 3] = 0;
-      }
-    }
-
-    ctx.putImageData(imageData, 0, 0);
-
-    window.requestAnimationFrame(render);
   }
 
   return render;
