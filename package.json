@@ -3,5 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "parcel src/index.html"
+  },
+  "dependencies": {
+    "parcel": "^2.4.0"
   }
 }
