@@ -74,7 +74,7 @@ for (const x of range(row_size)) {
 }
 
 function initialiseColourPickers() {
-  setInterval(() => {
+  return setInterval(() => {
     for (const { colourPicker } of instructions) {
       colourPicker.setHue();
       colourPicker.setAlpha();
@@ -83,6 +83,7 @@ function initialiseColourPickers() {
 }
 
 function render(ctx: CanvasRenderingContext2D) {
+  ctx.globalAlpha = 1;
   for (const { x, y, colourPicker } of instructions) {
     const xPos = x * square_size;
     const yPos = y * square_size;
@@ -93,7 +94,9 @@ function render(ctx: CanvasRenderingContext2D) {
 }
 
 export default () => {
-  initialiseColourPickers();
+  const pickerInterval = initialiseColourPickers();
 
-  return render;
+  const cleanNorthRender = () => clearInterval(pickerInterval);
+
+  return { cleanNorthRender, northRenderer: render };
 };

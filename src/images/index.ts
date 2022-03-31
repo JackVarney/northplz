@@ -26,34 +26,90 @@ import ump from "./ump.png";
 import ump2 from "./ump2.png";
 import usp from "./usp.png";
 import xm from "./xm.png";
+import fiveSevenFlipped from "./flipped/57.png";
+import akFlipped from "./flipped/ak.png";
+import ak2Flipped from "./flipped/ak2.png";
+import augFlipped from "./flipped/aug.png";
+import awpFlipped from "./flipped/awp.png";
+import awp2Flipped from "./flipped/awp2.png";
+import bizonFlipped from "./flipped/bizon.png";
+import czFlipped from "./flipped/cz.png";
+import deagleFlipped from "./flipped/deagle.png";
+import dualsFlipped from "./flipped/duals.png";
+import famasFlipped from "./flipped/famas.png";
+import galilFlipped from "./flipped/galil.png";
+import glockFlipped from "./flipped/glock.png";
+import m4a1Flipped from "./flipped/m4a1.png";
+import mac10Flipped from "./flipped/mac10.png";
+import mp5Flipped from "./flipped/mp5.png";
+import mp9Flipped from "./flipped/mp9.png";
+import novaFlipped from "./flipped/nova.png";
+import p90Flipped from "./flipped/p90.png";
+import p250Flipped from "./flipped/p250.png";
+import p2502Flipped from "./flipped/p2502.png";
+import sawedoffFlipped from "./flipped/sawedoff.png";
+import scoutFlipped from "./flipped/scout.png";
+import sgFlipped from "./flipped/sg.png";
+import umpFlipped from "./flipped/ump.png";
+import ump2Flipped from "./flipped/ump2.png";
+import uspFlipped from "./flipped/usp.png";
+import xmFlipped from "./flipped/xm.png";
 
 export default [
-  p250,
-  fiveSeven,
-  usp,
-  cz,
   glock,
-  deagle,
-  duals,
-  p2502,
-  awp2,
+  awpFlipped,
   ak,
+  mac10Flipped,
+  usp,
+  sawedoffFlipped,
   m4a1,
-  aug,
-  awp,
-  scout,
-  sg,
+  bizonFlipped,
+  p250,
+  sgFlipped,
+  awp2,
+  mp5Flipped,
+  fiveSeven,
+  scoutFlipped,
   famas,
-  galil,
-  ak2,
+  mp9Flipped,
+  cz,
+  ump2Flipped,
   ump,
-  mac10,
-  bizon,
-  mp5,
-  mp9,
-  ump2,
-  p90,
-  sawedoff,
-  nova,
+  p90Flipped,
+  galil,
+  novaFlipped,
+  deagle,
+  glockFlipped,
   xm,
+  akFlipped,
+  aug,
+  uspFlipped,
+  duals,
+  m4a1Flipped,
+  ak2,
+  p250Flipped,
+  p2502,
+  awp2Flipped,
+  awp,
+  fiveSevenFlipped,
+  mac10,
+  famasFlipped,
+  sawedoff,
+  czFlipped,
+  bizon,
+  umpFlipped,
+  sg,
+  galilFlipped,
+  mp5,
+  deagleFlipped,
+  scout,
+  xmFlipped,
+  mp9,
+  augFlipped,
+  ump2,
+  dualsFlipped,
+  p90,
+  ak2Flipped,
+  nova,
+  p2502Flipped,
 ];
