@@ -1,53 +1,59 @@
-import one from "./1.png";
-import two from "./2.png";
-import three from "./3.png";
-import four from "./4.png";
-import five from "./5.png";
-import six from "./6.png";
-import seven from "./7.png";
-import eight from "./8.png";
-import nine from "./9.png";
-import ten from "./10.png";
-import eleven from "./11.png";
-import twelve from "./12.png";
-import thirteen from "./13.png";
-import fourteen from "./14.png";
-import fifteen from "./15.png";
-import s from "./16.png";
-import d from "./17.png";
-import f from "./18.png";
-import e from "./19.png";
-import x from "./20.png";
-import c from "./21.png";
-import u from "./22.png";
-import i from "./23.png";
-import o from "./24.png";
-import iu from "./25.png";
+import fiveSeven from "./fiveSeven.png";
+import ak from "./ak.png";
+import ak2 from "./ak2.png";
+import aug from "./aug.png";
+import awp from "./awp.png";
+import awp2 from "./awp2.png";
+import bizon from "./bizon.png";
+import cz from "./cz.png";
+import deagle from "./deagle.png";
+import duals from "./duals.png";
+import famas from "./famas.png";
+import galil from "./galil.png";
+import glock from "./glock.png";
+import m4a1 from "./m4a1.png";
+import mac10 from "./mac10.png";
+import mp5 from "./mp5.png";
+import mp9 from "./mp9.png";
+import nova from "./nova.png";
+import p90 from "./p90.png";
+import p250 from "./p250.png";
+import p2502 from "./p2502.png";
+import sawedoff from "./sawedoff.png";
+import scout from "./scout.png";
+import sg from "./sg.png";
+import ump from "./ump.png";
+import ump2 from "./ump2.png";
+import usp from "./usp.png";
+import xm from "./xm.png";
 
 export default [
-  one,
-  two,
-  three,
-  four,
-  five,
-  six,
-  // seven,
-  eight,
-  nine,
-  ten,
-  eleven,
-  twelve,
-  thirteen,
-  fourteen,
-  fifteen,
-  s,
-  d,
-  f,
-  e,
-  x,
-  c,
-  u,
-  i,
-  o,
-  iu,
+  fiveSeven,
+  ak,
+  ak2,
+  aug,
+  awp,
+  awp2,
+  bizon,
+  cz,
+  deagle,
+  duals,
+  famas,
+  galil,
+  glock,
+  m4a1,
+  mac10,
+  mp5,
+  mp9,
+  nova,
+  p90,
+  p250,
+  p2502,
+  sawedoff,
+  scout,
+  sg,
+  ump,
+  ump2,
+  usp,
+  xm,
 ];
