@@ -1,4 +1,4 @@
-import fiveSeven from "./fiveSeven.png";
+import fiveSeven from "./57.png";
 import ak from "./ak.png";
 import ak2 from "./ak2.png";
 import aug from "./aug.png";
