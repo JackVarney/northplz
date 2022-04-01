@@ -1,10 +1,8 @@
 import north from "./north-ascii";
-import { createNumberRotator, ensureIsProductOf, hsla, range } from "../util";
+import { createNumberRotator, hsla, range } from "../util";
 
-const square_size = window.innerWidth / 200;
 const row_size = Math.sqrt(north.length);
 const col_size = Math.sqrt(north.length);
-const marginLeft = window.innerWidth - square_size * row_size;
 
 const hue_min = 190;
 const hue_max = 280;
@@ -45,13 +43,18 @@ const createInstructions = () => {
 
 const instructions = createInstructions();
 function render(ctx: CanvasRenderingContext2D) {
+  const square_size = window.innerWidth / 200;
+  const marginLeft = window.innerWidth - square_size * row_size - 40;
+  const marginTop = 40;
+
   ctx.globalAlpha = 1;
+
   for (const { x, y, colourPicker } of instructions) {
     const xPos = x * square_size;
     const yPos = y * square_size;
 
     ctx.fillStyle = hsla(colourPicker(), 100, 80, 1);
-    ctx.fillRect(marginLeft + xPos, yPos, square_size, square_size);
+    ctx.fillRect(marginLeft + xPos, marginTop + yPos, square_size, square_size);
   }
 }
 

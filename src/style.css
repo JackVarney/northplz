@@ -15,7 +15,28 @@ h1 {
   position: absolute;
   font-size: 60px;
   font-family: "Faster One", cursive;
-  margin-left: 40px;
+  margin: 40px;
+  margin-left: 60px;
   color: rgba(0, 0, 0, 0.8);
-  letter-spacing: 30px;
+  letter-spacing: 20px;
+}
+
+#mobile-warning {
+  display: none;
+  font-size: 60px;
+  font-family: "Faster One", cursive;
+  text-align: center;
+}
+
+@media screen and (max-width: 1200px) {
+  #mobile-warning {
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 1000;
+    background: black;
+    font-family: "Faster One", cursive;
+    color: rgba(255, 255, 255, 0.92);
+  }
 }
