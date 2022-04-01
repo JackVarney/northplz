@@ -25,7 +25,7 @@ const init = async () => {
 
   const imageRenderer = await createImageRenderer();
   const northRenderer = createNorthRenderer();
-  const backgroundRenderer = createBackgroundRenderer();
+  const backgroundRenderer = await createBackgroundRenderer();
 
   const render = () => {
     if (stop) {

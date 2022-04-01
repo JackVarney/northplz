@@ -10,7 +10,7 @@ export default async () => {
   let points = createPoints(flipped);
 
   function render(ctx: CanvasRenderingContext2D) {
-    ctx.globalAlpha = 0.5;
+    ctx.globalAlpha = 0.8;
     const now = Date.now();
     const shouldRender = ({ t }: { t: number }) => now - then > t;
     const shouldRotateImages = points.every(shouldRender);

@@ -16,7 +16,8 @@ const createNumberRotator = (
   min: number,
   max: number,
   increment: number,
-  initialValue: number
+  initialValue: number,
+  interval = 10
 ) => {
   let then = Date.now();
   let value = initialValue;
@@ -25,7 +26,7 @@ const createNumberRotator = (
   return () => {
     let now = Date.now();
 
-    if (now - then < 10) {
+    if (now - then < interval) {
       return value;
     }
     then = now;
