@@ -3,7 +3,7 @@ import { log, range } from "../util";
 
 const noise = new SimplexNoise();
 
-const R = 18;
+const R = 40;
 
 const createPoint = (
   x: number,

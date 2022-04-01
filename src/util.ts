@@ -12,6 +12,38 @@ const log = (...toLog: any[]) => {
   }
 };
 
+const createNumberRotator = (
+  min: number,
+  max: number,
+  increment: number,
+  initialValue: number
+) => {
+  let then = Date.now();
+  let value = initialValue;
+  let inReverse = false;
+
+  return () => {
+    let now = Date.now();
+
+    if (now - then < 10) {
+      return value;
+    }
+    then = now;
+
+    if (value <= min) {
+      inReverse = false;
+    }
+
+    if (value >= max) {
+      inReverse = true;
+    }
+
+    value += inReverse ? -increment : increment;
+
+    return value;
+  };
+};
+
 const createMouseTracker = (canvas: HTMLCanvasElement) => {
   let x = 0;
   let y = 0;
@@ -52,4 +84,5 @@ export {
   range,
   log,
   createMouseTracker,
+  createNumberRotator,
 };

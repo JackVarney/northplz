@@ -1,11 +1,13 @@
 import "./style.css";
-import createNorthRenderer from "./north-renderer";
+import createNorthRenderer from "./north-renderer/north-renderer";
 import createImageRenderer from "./image-renderer/image-renderer";
+import createBackgroundRenderer from "./background-renderer/background-renderer";
 import { hsla, rgba } from "./util";
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
 
 app.innerHTML = `
+  <h1>North (Holo) | London 2018</h1>
   <canvas id="canvas" />
 `;
 
@@ -22,41 +24,15 @@ const init = async () => {
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   const imageRenderer = await createImageRenderer();
-  const { northRenderer, cleanNorthRender } = createNorthRenderer();
+  const northRenderer = createNorthRenderer();
+  const backgroundRenderer = createBackgroundRenderer();
 
-  const createHueRotator = () => {
-    const hue_min = 190;
-    const hue_max = 280;
-    let hue = 280;
-    let hueInReverse = false;
-
-    return () => {
-      if (hue <= hue_min) {
-        hueInReverse = false;
-      }
-
-      if (hue >= hue_max) {
-        hueInReverse = true;
-      }
-
-      hue += hueInReverse ? -1 : 1;
-
-      return hue;
-    };
-  };
-
-  const hueRotator = createHueRotator();
   const render = () => {
     if (stop) {
-      cleanNorthRender();
       return;
     }
 
-    ctx.globalAlpha = 1;
-
-    ctx.fillStyle = hsla(hueRotator(), 80, 70, 0.01);
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
+    backgroundRenderer(ctx);
     imageRenderer(ctx);
     northRenderer(ctx);
 

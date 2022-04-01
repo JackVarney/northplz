@@ -6,8 +6,8 @@ export default async () => {
 
   let then = Date.now();
   let index = 0;
-  let points = createPoints();
   let flipped = false;
+  let points = createPoints(flipped);
 
   function render(ctx: CanvasRenderingContext2D) {
     ctx.globalAlpha = 0.1;
