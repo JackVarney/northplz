@@ -38,7 +38,7 @@ function createPoints(flipped: boolean) {
     }
   }
 
-  points.push(createPoint(0, 0, 0, 0, 1500));
+  points.push(createPoint(0, 0, 0, 0, 2500));
 
   return points;
 }

@@ -17,8 +17,10 @@ h1 {
   font-family: "Faster One", cursive;
   margin: 40px;
   margin-left: 60px;
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.8);
   letter-spacing: 20px;
+
+  text-shadow: 0 0 7px #777;
 }
 
 #mobile-warning {
