@@ -7,7 +7,6 @@ import { hsla, rgba } from "./util";
 const app = document.querySelector<HTMLDivElement>("#app")!;
 
 app.innerHTML = `
-  <h1>North (Holo) | London 2018</h1>
   <canvas id="canvas" />
 `;
 
@@ -33,8 +32,8 @@ const init = async () => {
     }
 
     backgroundRenderer(ctx);
-    imageRenderer(ctx);
     northRenderer(ctx);
+    imageRenderer(ctx);
 
     window.requestAnimationFrame(render);
   };

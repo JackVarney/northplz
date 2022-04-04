@@ -1,4 +1,3 @@
-import createPoints from "./create-points";
 import loadImages from "./load-images";
 
 export default async () => {
@@ -7,43 +6,32 @@ export default async () => {
   let then = Date.now();
   let index = 0;
   let flipped = false;
-  let points = createPoints(flipped);
 
   function render(ctx: CanvasRenderingContext2D) {
-    ctx.globalAlpha = 0.8;
+    ctx.globalAlpha = 1;
     const now = Date.now();
-    const shouldRender = ({ t }: { t: number }) => now - then > t;
-    const shouldRotateImages = points.every(shouldRender);
 
-    if (shouldRotateImages) {
+    if (now - then > 5000) {
       then = Date.now();
       flipped = !flipped;
-      points = createPoints(flipped);
-
       index += 1;
+
       if (index === images.length) {
         index = 0;
       }
     }
 
-    let i = 0;
-    for (const { x, y, w, h, t, n } of points) {
-      if (shouldRender({ t })) {
-        ctx.drawImage(
-          images[index],
-          x * w, // x pos in spritesheet
-          y * h, // y pos in spritesheet
-          w, // x distance in spritesheet
-          h, // y distance in spritesheet
-          x * w, // x pos on canvas
-          y * h, // y pos on canvas
-          w, // x distance on canvas
-          h // y distance on canvas
-        );
-      }
-
-      i += 1;
-    }
+    ctx.drawImage(
+      images[index],
+      0, // x pos in spritesheet
+      0, // y pos in spritesheet
+      images[index].width, // x distance in spritesheet
+      images[index].height, // y distance in spritesheet
+      0, // x pos on canvas
+      0, // y pos on canvas
+      ctx.canvas.width, // x distance on canvas
+      ctx.canvas.height // y distance on canvas
+    );
   }
 
   return render;
