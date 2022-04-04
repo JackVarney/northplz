@@ -4,7 +4,7 @@ export default async () => {
   const images = await loadImages;
 
   let then = Date.now();
-  let index = 0;
+  let index = Math.floor(Math.random() * (Math.max(images.length) - 1));
   let flipped = false;
 
   function render(ctx: CanvasRenderingContext2D) {
