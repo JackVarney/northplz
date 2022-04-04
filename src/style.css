@@ -4,11 +4,12 @@ body {
   height: 100%;
   margin: 0px;
   border: 0;
-  /* overflow: hidden;
+  overflow: hidden;
+
   display: flex;
 
   justify-content: center;
-  align-items: center; */
+  align-items: center;
 }
 
 #mobile-warning {
